@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,14 +27,21 @@ namespace Nokia.Storage.Controllers
         // POST: api/file
         [HttpPost()]
         [ProducesResponseType(201, Type = typeof(StoredFileInfo))]
-        public async Task<IActionResult> ImportFile([Required]IFormFile file)
+        [ProducesResponseType(400, Type = typeof(string))]
+        public async Task<IActionResult> ImportFile([Required]IFormFile tarFile, CancellationToken cancellationToken)
         {
             try
             {
-                var storedFile = await _storage.StoreAsync(file);
+                if(tarFile.ContentType != Constants.TarBallContentType)
+                {
+                    _logger.LogError($"unsupported content type: {tarFile.ContentType}");
+                    return BadRequest($"unsupported content type: {tarFile.ContentType}");
+                }
+
+                var storedFile = await _storage.StoreAsync(tarFile, cancellationToken);
                 _logger.LogInformation("file imported sucessfully", storedFile.FileId);
 
-                return CreatedAtAction("fileimported", storedFile);
+                return CreatedAtAction(nameof(PullFile), storedFile);
 
             }
             catch(Exception ex)
@@ -50,14 +54,14 @@ namespace Nokia.Storage.Controllers
         [HttpGet()]
         [ProducesResponseType(200)]
         [ProducesResponseType(404, Type = typeof(StoredFileInfo))]
-        public async Task<IActionResult> PullFile([Required]string fileId)
+        public async Task<IActionResult> PullFile([Required]string fileId, CancellationToken cancellationToken)
         {
             try
             {
-                var result = await _storage.GetAsync(fileId);
-                if(result.Item1 != null || result.Item2 == null)
+                var result = await _storage.GetAsync(fileId, cancellationToken);
+                if(result.Item1 != null || result.Item2 != null)
                 {
-                    return File(result.Item1, result.Item2.ContentType);
+                    return File(result.Item1, result.Item2.ContentType, result.Item2.FileName);
                 }
 
                 return NotFound(new StoredFileInfo { FileId = fileId });
@@ -72,12 +76,20 @@ namespace Nokia.Storage.Controllers
 
         // GET: api/file/list
         [HttpGet("list")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<StoredFileInfo>))]
-        public async Task<IActionResult> ListFiles()
+        [ProducesResponseType(200, Type = typeof(PaginatedFileInfo))]
+        public async Task<IActionResult> ListFiles(int pageSize, int pageNumber, CancellationToken cancellationToken)
         {
             try
             {
-                var result = await _storage.ListAsync();
+                if(pageSize <= 0)
+                {
+                    pageSize = 10;
+                }
+                if (pageNumber <= 0)
+                {
+                    pageNumber = 1;
+                }
+                var result = await _storage.ListAsync(pageSize, pageNumber, cancellationToken);
                 return Ok(result);
 
             }

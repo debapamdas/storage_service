@@ -1,0 +1,17 @@
+services:
+
+  file_storage_service:
+    isolation: hyperv
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - Storage__ConnectionString=mongodb://mongoserver:27017
+    
+  mongoserver:
+    isolation: hyperv
+    image: hcr.io/capture/mongo:4.0-windowsservercore-ltsc2019
+    ports:
+      - 27017:27017

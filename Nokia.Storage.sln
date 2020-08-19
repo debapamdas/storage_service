@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nokia.Storage", "storage_service\Nokia.Storage.csproj", "{A1BF661F-8826-470E-A7A1-D4FA40B4FCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage.Test", "Nokia.Storage.Test\Nokia.Storage.Test.csproj", "{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage.IntergrationTest", "Nokia.Storage.IntergrationTest\Nokia.Storage.IntergrationTest.csproj", "{D947A150-C936-43BE-A841-C14EFE8EBF99}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage", "Nokia.Storage\Nokia.Storage.csproj", "{4962E5FB-446F-43C2-9EAF-236680189BC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1BF661F-8826-470E-A7A1-D4FA40B4FCDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1BF661F-8826-470E-A7A1-D4FA40B4FCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1BF661F-8826-470E-A7A1-D4FA40B4FCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1BF661F-8826-470E-A7A1-D4FA40B4FCDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D947A150-C936-43BE-A841-C14EFE8EBF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D947A150-C936-43BE-A841-C14EFE8EBF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D947A150-C936-43BE-A841-C14EFE8EBF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D947A150-C936-43BE-A841-C14EFE8EBF99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4962E5FB-446F-43C2-9EAF-236680189BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4962E5FB-446F-43C2-9EAF-236680189BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4962E5FB-446F-43C2-9EAF-236680189BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4962E5FB-446F-43C2-9EAF-236680189BC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

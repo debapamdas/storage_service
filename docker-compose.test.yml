@@ -1,0 +1,14 @@
+version: "3.6"
+
+services:
+  storage_integrationtests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    depends_on: 
+      - mongoserver
+  
+  mongoserver:
+    image: mongo
+    ports:
+      - 27017:27017

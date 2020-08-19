@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Nokia.Storage.Configuration;
 using Nokia.Storage.FileStorage;
 
-namespace storage_service
+namespace Nokia.Storage
 {
     public class Startup
     {
@@ -18,6 +19,7 @@ namespace storage_service
         {
             services.AddMvc();
             services.AddTransient<IFileStorage, MongoFileStorage>(sp => new MongoFileStorage(_storageOptions.ConnectionString));
+            services.AddTransient<IContentTypeProvider, FileExtensionContentTypeProvider>();
 
             services.AddSwaggerGen();
 

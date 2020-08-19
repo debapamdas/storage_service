@@ -1,0 +1,16 @@
+version: "3.6"
+
+services:
+  file_storage_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - Storage__ConnectionString=mongodb://mongoserver:27017
+    
+  mongoserver:
+    image: mongo
+    ports:
+      - 27017:27017
