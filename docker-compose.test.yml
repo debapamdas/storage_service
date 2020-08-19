@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
+    environment:
+      - Storage__ConnectionString=mongodb://mongoserver:27017
     depends_on: 
       - mongoserver
   

@@ -3,11 +3,7 @@ WORKDIR /app
 COPY . .
 RUN dotnet restore
 
-FROM restore as publish
-WORKDIR /app
-RUN dotnet publish --configuration Release --no-restore
-
-FROM publish as test
-WORKDIR /app/Nokia.Storage.IntegrationTest
+FROM restore as test
+WORKDIR /app/Nokia.Storage.IntergrationTest
 
 CMD dotnet test

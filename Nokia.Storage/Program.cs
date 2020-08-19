@@ -21,6 +21,12 @@ namespace Nokia.Storage
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration((ctx, builder) => {
+                        builder
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                        .AddEnvironmentVariables();
+                    });
+                    webBuilder.UseUrls("http://0.0.0.0:5000");
                 });
     }
 }
