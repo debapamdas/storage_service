@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-storage-deployment
+  labels:
+    app: ms-storage
+spec:
+  replicas: 2
+  selector:
+    # will select all pods by lable app:ms-storage
+    matchLabels:
+      app: ms-storage
+  template:
+    metadata:
+      name: ms-storage-pod
+      labels:
+        app: ms-storage
+    spec:
+      containers:
+      - name: ms-storage
+        image: debapamd/ms_storage:0.0.1
+        ports:
+        - containerPort: 5000
+        env:
+          - name: Storage__ConnectionString
+            value: mongodb://mongodb-service.default.svc.cluster.local:27017
+        resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"

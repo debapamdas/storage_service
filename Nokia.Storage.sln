@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage.Test", "Nokia.Storage.Test\Nokia.Storage.Test.csproj", "{FCFBA1E7-3F6C-4449-B8D0-6330D4798546}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage.IntergrationTest", "Nokia.Storage.IntergrationTest\Nokia.Storage.IntergrationTest.csproj", "{D947A150-C936-43BE-A841-C14EFE8EBF99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage.IntergrationTest", "Nokia.Storage.IntegrationTest\Nokia.Storage.IntegrationTest.csproj", "{D947A150-C936-43BE-A841-C14EFE8EBF99}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nokia.Storage", "Nokia.Storage\Nokia.Storage.csproj", "{4962E5FB-446F-43C2-9EAF-236680189BC2}"
 EndProject

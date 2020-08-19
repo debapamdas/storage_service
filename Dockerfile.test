@@ -4,6 +4,6 @@ COPY . .
 RUN dotnet restore
 
 FROM restore as test
-WORKDIR /app/Nokia.Storage.IntergrationTest
+WORKDIR /app/Nokia.Storage.IntegrationTest
 
 CMD dotnet test
