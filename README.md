@@ -15,7 +15,7 @@
 ### Deployment
     To deploy mongo
         step 1: create deployment in local k8s cluster $ kubectl apply -f ./deployments/mongo/deployment.yml
-        step 2: create a clusterip service to expose deployment internally $ kubectl apply -f ./deployments/storage_service/svc.yml
+        step 2: create a clusterip service to expose deployment internally $ kubectl apply -f ./deployments/mongo/svc.yml
 
     To deploy Storage Service
         step 1: build docker image $ docker build -t debapamd/ms_storage:0.0.1 .
